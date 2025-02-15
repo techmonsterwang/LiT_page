@@ -160,6 +160,18 @@
   /* 列之间的间距 */
 }
 
+.grid-container-video-esx {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* 定义一列 */
+  grid-template-rows: auto;
+  /* 定义一行 */
+  gap: 10px;
+  /* 列之间的间距 */
+  width: 80%;
+  /* 容器宽度占父元素的80% */
+}
+
 .video-item {
   width: 100%;
   height: auto;
