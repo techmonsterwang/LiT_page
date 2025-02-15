@@ -146,11 +146,11 @@
             <p class="paragraph-3 nerf_text nerf_results_text">
                 In commonly used sub-quadratic complexity modules,
                 linear attention benefits from simplicity and high parallelism, making it promising for image synthesis tasks. However, the architectural design and learning strategy for linear attention remain underexplored in this field. In this
-                paper, we offer a suite of ready-to-use solutions for efficient linear diffusion Transformers. Our core contributions include: (1) Simplified Linear Attention using few
-                heads, observing the free-lunch effect of performance without latency increase. (2) Weight inheritance from a fully
-                pre-trained diffusion Transformer: initializing linear Transformer using pre-trained diffusion Transformer and loading
+                paper, we offer a suite of ready-to-use solutions for efficient linear diffusion Transformers. Our core contributions include: <strong>(1) Simplified Linear Attention</strong> using <strong>few
+                heads</strong>, observing the free-lunch effect of performance without latency increase. <strong>(2) Weight inheritance from a fully
+                pre-trained diffusion Transformer:</strong> initializing linear Transformer using pre-trained diffusion Transformer and loading
                 all parameters except for those related to linear attention.
-                (3) Hybrid knowledge distillation objective: using a pretrained diffusion Transformer to help the training of the student linear Transformer, supervising not only the predicted
+            <strong>(3) Hybrid knowledge distillation objective:</strong> using a pretrained diffusion Transformer to help the training of the student linear Transformer, supervising not only the predicted
                 noise but also the variance of the reverse diffusion process.
                 These guidelines lead to our proposed <strong>Linear Diffusion
                     Transformer (LiT)</strong>, an efficient text-to-image Transformer
@@ -195,14 +195,14 @@
             <!-- <h3 class="grey-heading_nerf_h3">Text-to-image evaluation on various benchmarks.</h3> -->
             <!-- <p><strong>Text-to-image evaluation on various benchmarks.</strong> -->
             </p>
-            <img src="assets/images/256.png" style="width: 100%; max-width: 800px;">
+            <img src="assets/images/256.png" style="width: 75%; max-width: 800px;">
             <p><strong>Despite having only 20% of the training steps of DiT-XL/2, LiT still competes on par with DiT (2.32 vs. 2.27).</strong>
             </p>
         </div>
         <div class="grid-container-1">
             <!-- <h3 class="grey-heading_nerf_h3">Text-to-video evaluation on VBench.</h3> -->
             <!-- <p><strong>2. Text-to-video evaluation on VBench.</strong> -->
-            <img src="assets/images/512.png" style="width: 100%; max-width: 800px;">
+            <img src="assets/images/512.png" style="width: 75%; max-width: 800px;">
             <p><strong> LiT, using pure linear attention, achieves an impressive FID of 3.69, comparable to DiT trained for 3M steps.</strong>
             </p>
         </div>
@@ -225,7 +225,7 @@
         </div>
 
         <div class="grid-container-1">
-            <h3 class="grey-heading_nerf_h3">Offline deployment of on a Windows 11 laptop</h3>
+            <h2 class="grey-heading_nerf_h2">Offline deployment of on a Windows 11 laptop</h2>
                 <div class="grid-container-video-ex">
                     <!-- 第一列 -->
                     <video muted autoplay controls loop class="video-item">
