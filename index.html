@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <!-- model viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
-    <title>LiT: Delving into a Simplified Linear Diffusion Transformer for Image Generation</title>
+    <title>LiT: Delving into a Simple Linear Diffusion Transformer for Image Generation</title>
     <link rel="icon" type="image/x-icon" href="../assets/css/images/favicon.ico">
     <meta content="LiT: Delving into a Simplified Linear Diffusion Transformer for Image Generation" name="description" />
     <meta content="summary" name="twitter:card" />
@@ -144,23 +144,33 @@
         <div class="w-container grey_container">
             <h2 class="grey-heading_nerf_h2">Abstract</h2>
             <p class="paragraph-3 nerf_text nerf_results_text">
-                In commonly used sub-quadratic complexity modules,
-                linear attention benefits from simplicity and high parallelism, making it promising for image synthesis tasks. However, the architectural design and learning strategy for linear attention remain underexplored in this field. In this
-                paper, we offer a suite of ready-to-use solutions for efficient linear diffusion Transformers. Our core contributions include: <strong>(1) Simplified Linear Attention</strong> using <strong>few
-                heads</strong>, observing the free-lunch effect of performance without latency increase. <strong>(2) Weight inheritance from a fully
-                pre-trained diffusion Transformer:</strong> initializing linear Transformer using pre-trained diffusion Transformer and loading
-                all parameters except for those related to linear attention.
-            <strong>(3) Hybrid knowledge distillation objective:</strong> using a pretrained diffusion Transformer to help the training of the student linear Transformer, supervising not only the predicted
-                noise but also the variance of the reverse diffusion process.
-                These guidelines lead to our proposed <strong>Linear Diffusion
-                    Transformer (LiT)</strong>, an efficient text-to-image Transformer
-                that can be deployed offline on a laptop. Experiments show
-                that in class-conditional 256×256 and 512×512 ImageNet
-                benchmark LiT achieves highly competitive FID while reducing training steps by 80% and 77% compared to DiT.
-                LiT also rivals methods based on Mamba or Gated Linear
-                Attention. Besides, for text-to-image generation, LiT allows
-                for the rapid synthesis of up to 1K resolution photorealistic
-                images.
+                In this paper, we investigate how to convert a pre-trained
+                Diffusion Transformer (DiT) into a linear DiT, as its sim-
+                plicity, parallelism, and efficiency for image generation.
+                Through detailed exploration, we offer a suite of ready-to-
+                use solutions, ranging from linear attention design to opti-
+                mization strategies. Our core contributions include 5 prac-
+                tical guidelines: 1) Applying depth-wise convolution within
+                simple linear attention is sufficient for image generation.
+                2) Using fewer heads in linear attention provides a free-
+                lunch performance boost without increasing latency. 3) In-
+                heriting weights from a fully converged, pre-trained DiT. 4)
+                Loading all parameters except those related to linear atten-
+                tion. 5) Hybrid knowledge distillation: using a pre-trained
+                teacher DiT to help the training of the student linear DiT,
+                supervising not only the predicted noise but also the vari-
+                ance of the reverse diffusion process. These guidelines lead
+                to our proposed <strong>Linear Diffusion Transformer (LiT)</strong>, which
+                serves as a safe and efficient alternative baseline for DiT
+                with pure linear attention. In class-conditional 256×256
+                and 512×512 ImageNet generation, LiT can be quickly
+                adapted from DiT using only 20% and 33% of DiT’s train-
+                ing steps, respectively, while achieving comparable perfor-
+                mance. LiT also rivals methods based on Mamba or Gated
+                Linear Attention. Moreover, the same guidelines generalize
+                to text-to-image generation: LiT can be swiftly converted
+                from PixArt-Σ to generate high-quality images, maintain-
+                ing comparable GenEval scores.
                 <br>
             </p>
         </div>
@@ -171,14 +181,7 @@
     <div class="white_section_nerf w-container">
         <h2 class="grey-heading_nerf_h2">Method</h2>
         <div class="grid-container-1">
-            <img src="assets/images/simple.png" style="width: 100%; max-width: 800px;">
-            <!-- <img src="assets/images/nova_framework.png"> -->
-            <p> Compared to Mamba SSM and gated linear attention, <strong>linear attention</strong> achieves sub-quadratic computational
-                complexity with a <strong>remarkably simple design</strong>, and it does not depend on any recurrent states.
-            </p>
-        </div>
-        <div class="grid-container-1">
-            <img src="assets/images/guideline.png" style="width: 100%; max-width: 800px;">
+            <img src="assets/images/guideline_camera.png" style="width: 100%; max-width: 800px;">
             <!-- <img src="assets/images/attention.png"> -->
             <p> <strong>Overall training procedure of LiT</strong>. Following the macro/micro-level design of DiT (for class-conditioned image generation)
                 and PixArt-Σ (for text-to-image generation), LiT replace the self-attention in each block with the linear attention. We linearize diffusion
@@ -204,6 +207,13 @@
             <!-- <p><strong>2. Text-to-video evaluation on VBench.</strong> -->
             <img src="assets/images/512.png" style="width: 50%; max-width: 800px;">
             <p><strong> LiT, using pure linear attention, achieves an impressive FID of 3.69, comparable to DiT trained for 3M steps.</strong>
+            </p>
+        </div>
+        <div class="grid-container-1">
+            <!-- <h3 class="grey-heading_nerf_h3">Text-to-video evaluation on VBench.</h3> -->
+            <!-- <p><strong>2. Text-to-video evaluation on VBench.</strong> -->
+            <img src="assets/images/geneval.png" style="width: 50%; max-width: 800px;">
+            <p><strong> Built on PixArt, LiT leverages pure linear attention to achieve competitive performance.</strong>
             </p>
         </div>
     </div>
