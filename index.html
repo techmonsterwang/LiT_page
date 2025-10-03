@@ -144,33 +144,16 @@
         <div class="w-container grey_container">
             <h2 class="grey-heading_nerf_h2">Abstract</h2>
             <p class="paragraph-3 nerf_text nerf_results_text">
-                In this paper, we investigate how to convert a pre-trained
-                Diffusion Transformer (DiT) into a linear DiT, as its sim-
-                plicity, parallelism, and efficiency for image generation.
-                Through detailed exploration, we offer a suite of ready-to-
-                use solutions, ranging from linear attention design to opti-
-                mization strategies. Our core contributions include 5 prac-
-                tical guidelines: 1) Applying depth-wise convolution within
-                simple linear attention is sufficient for image generation.
-                2) Using fewer heads in linear attention provides a free-
-                lunch performance boost without increasing latency. 3) In-
-                heriting weights from a fully converged, pre-trained DiT. 4)
-                Loading all parameters except those related to linear atten-
-                tion. 5) Hybrid knowledge distillation: using a pre-trained
-                teacher DiT to help the training of the student linear DiT,
-                supervising not only the predicted noise but also the vari-
-                ance of the reverse diffusion process. These guidelines lead
-                to our proposed <strong>Linear Diffusion Transformer (LiT)</strong>, which
-                serves as a safe and efficient alternative baseline for DiT
-                with pure linear attention. In class-conditional 256×256
-                and 512×512 ImageNet generation, LiT can be quickly
-                adapted from DiT using only 20% and 33% of DiT’s train-
-                ing steps, respectively, while achieving comparable perfor-
-                mance. LiT also rivals methods based on Mamba or Gated
-                Linear Attention. Moreover, the same guidelines generalize
-                to text-to-image generation: LiT can be swiftly converted
-                from PixArt-Σ to generate high-quality images, maintain-
-                ing comparable GenEval scores.
+                In this paper, we investigate how to convert a pre-trained Diffusion Transformer (DiT) into a linear DiT, as its simplicity, parallelism, and efficiency for image generation. 
+Through detailed exploration, we offer a suite of ready-to-use solutions, ranging from linear attention design to optimization strategies. 
+Our core contributions include 5 practical guidelines:
+1) Applying depth-wise convolution within simple linear attention is sufficient for image generation.
+2) Using fewer heads in linear attention provides a free-lunch performance boost without increasing latency.
+3) Inheriting weights from a fully converged, pre-trained DiT.  
+4) Loading all parameters except those related to linear attention. 
+5) Hybrid knowledge distillation: using a pre-trained teacher DiT to help the training of the student linear DiT, supervising not only the predicted noise but also the variance of the reverse diffusion process. 
+These guidelines lead to our proposed Linear Diffusion Transformer (LiT), which serves as a safe and efficient alternative baseline for DiT with pure linear attention.
+In class-conditional 256×256 and 512×512 ImageNet generation, LiT can be quickly adapted from DiT using only 20% and 33% of DiT’s training steps, respectively, while achieving comparable performance. LiT also rivals methods based on Mamba or Gated Linear Attention. Moreover, the same guidelines generalize to text-to-image generation: LiT can be swiftly converted from PixArt-$\Sigma$ to generate high-quality images, maintaining comparable GenEval scores. 
                 <br>
             </p>
         </div>
